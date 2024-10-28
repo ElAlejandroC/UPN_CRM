@@ -38,7 +38,13 @@
                     <th>Nombre</th>
                     <th>Actividad</th>
                     <th>Fecha</th>
-                    <th>Acciones</th>
+                    <th>
+                        Descargar
+                    </th>
+                    <th>
+                        Modificar
+                    </th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody id="inscritos-table-body">
@@ -99,7 +105,7 @@
         </div>
     </div>
 
-
+    <!-- Modal para confirmación de eliminación -->
     <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-labelledby="confirmarEliminarModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -120,6 +126,53 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal para modificar participación -->
+    <div class="modal fade" id="modificarModal" tabindex="-1" aria-labelledby="modificarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modificarModalLabel">Modificar Participación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modificar-form">
+                        <!-- Campos de formulario (igual que en Agregar Participación) -->
+                        <div class="mb-3">
+                            <label for="modificar-nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="modificar-nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modificar-prefijo" class="form-label">Prefijo</label>
+                            <select class="form-control" id="modificar-prefijo" required>
+                                <option value="la">La</option>
+                                <option value="el">El</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modificar-tipoActividad" class="form-label">Tipo de Actividad</label>
+                            <input type="text" class="form-control" id="modificar-tipoActividad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modificar-nombreActividad" class="form-label">Nombre de la Actividad</label>
+                            <input type="text" class="form-control" id="modificar-nombreActividad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modificar-fecha" class="form-label">Fecha</label>
+                            <select class="form-control" id="modificar-fecha" required>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="modificarRegistro()">Guardar cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- Scripts -->
