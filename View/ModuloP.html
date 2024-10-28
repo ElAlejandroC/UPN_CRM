@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Inscritos - XVIII Jornada Académica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Styles/tablas.css">
+    <script src="Scripts/JAC.js"></script>
+</head>
+<body>
+    <!-- Header con botón de regreso -->
+    <header class="bg-dark text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <button class="btn btn-light" onclick="window.location.href='Index.html'">Volver al Inicio</button>
+            <h2 class="mb-0">XVIII Jornada Académica, Cultural y de Salud</h2>
+        </div>
+    </header>
+
+    <!-- Encabezado -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Lista de Inscritos</h1>
+
+        <!-- Botones para agregar y eliminar participaciones -->
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-danger" id="eliminar-btn" onclick="activarSeleccion()">Eliminar Registros</button>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarModal">Agregar Participación</button>
+        </div>
+    </div>
+
+    <!-- Tabla de inscritos -->
+    <div class="container">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th><input type="checkbox" id="select-all" onclick="seleccionarTodos(this)"></th> <!-- Checkbox para seleccionar todo -->
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Actividad</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="inscritos-table-body">
+                <!-- Los datos de la tabla se cargarán dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="container mt-5">
+        <footer class="text-center">
+            <p>&copy; 2024 XVIII Jornada Académica, Cultural y de Salud. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Modal para agregar participación -->
+    <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarModalLabel">Agregar Participación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="agregar-form">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="prefijo" class="form-label">Prefijo</label>
+                            <select class="form-control" id="prefijo" required>
+                                <option value="la">La</option>
+                                <option value="el">El</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoActividad" class="form-label">Tipo de Actividad</label>
+                            <input type="text" class="form-control" id="tipoActividad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombreActividad" class="form-label">Nombre de la Actividad</label>
+                            <input type="text" class="form-control" id="nombreActividad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha</label>
+                            <select class="form-control" id="fecha" required>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-labelledby="confirmarEliminarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarEliminarModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar las siguientes constancias?</p>
+                    <div id="lista-ids-eliminar" class="alert alert-warning">
+                        <!-- Aquí se mostrarán los IDs -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmarEliminacion()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="Scripts/JAC.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
