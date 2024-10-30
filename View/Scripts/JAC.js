@@ -11,7 +11,8 @@ async function cargarDatos() {
                             <td><input type="checkbox" class="fila-checkbox"></td>
                             <td>${inscrito.ID}</td>
                             <td>${inscrito.Nombre}</td>
-                            <td>${inscrito.Actividad}</td>
+                            <td>${inscrito.Rol}</td>
+                            <td>${inscrito.Tipo+''+inscrito.Actividad}</td>
                             <td>${inscrito.Fecha}</td>
                             <td>
                                 <button class="btn btn-primary" onclick="descargarPDF(${inscrito.ID})">Descargar</button>
@@ -135,6 +136,7 @@ async function eliminarRegistro(id) {
 document.getElementById('agregar-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const Nombre = document.getElementById('nombre').value;
+    const Rol = document.getElementById('rol').value;
     const Prefix = document.getElementById('prefijo').value;
     const Tipo1 = document.getElementById('tipoActividad').value;
     const Actividad = document.getElementById('nombreActividad').value;
@@ -149,7 +151,7 @@ document.getElementById('agregar-form').addEventListener('submit', async (e) => 
         const response = await fetch('http://localhost:3000/api/agregar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ Nombre, Prefix, Tipo, formateo, Fecha })
+            body: JSON.stringify({ Nombre, Rol,Prefix, Tipo, formateo, Fecha })
         });
         console.log(response);
         if (response.ok) {
@@ -169,7 +171,6 @@ document.getElementById('agregar-form').addEventListener('submit', async (e) => 
 async function abrirModalModificar(id) { // Recibe el ID
     idModificar = id;
     console.log(`ID a modificar: ${idModificar}`);
-
     try {
         // Obtiene los datos del registro por ID
         const response = await fetch(`http://localhost:3000/api/obtenerFila/${idModificar}`);
@@ -177,6 +178,7 @@ async function abrirModalModificar(id) { // Recibe el ID
 
         // Llena el formulario con los datos obtenidos
         document.getElementById('modificar-nombre').value = data.Nombre;
+        document.getElementById('modificar-rol').value = data.Rol;
         document.getElementById('modificar-prefijo').value = data.Prefix;
         document.getElementById('modificar-tipoActividad').value = data.Tipo;
         document.getElementById('modificar-nombreActividad').value = data.Actividad;
@@ -192,18 +194,19 @@ async function abrirModalModificar(id) { // Recibe el ID
     } catch (error) {
         console.error('Error al obtener los datos del registro:', error);
     }
-    return id
+    return idModificar
 }
 
-async function modificarRegistro(id) {
-    console.log(id);
+async function modificarRegistro(idModificar) {
+    console.log(idModificar);
     
     // Obtener los valores actualizados del formulario
     const Nombre = document.getElementById('modificar-nombre').value;
+    const Rol = document.getElementById('modificar-rol').value;
     const Prefix = document.getElementById('modificar-prefijo').value;
     const Tipo1 = document.getElementById('modificar-tipoActividad').value;
     const Actividad = document.getElementById('modificar-nombreActividad').value;
-    const diaElegido = document.getElementById('fecha').value;
+    const diaElegido = document.getElementById('modificar-fecha').value; // Corrección aquí
     
     // Formatear los datos
     const Tipo = `${Tipo1}:`;
@@ -212,12 +215,12 @@ async function modificarRegistro(id) {
 
     try {
         // Enviar la solicitud PUT al backend con los datos actualizados
-        const response = await fetch(`http://localhost:3000/api/modificar/${id}`, {
+        const response = await fetch(`http://localhost:3000/api/modificar/${idModificar}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ Nombre, Prefix, Tipo, Actividad, Fecha }), // Enviar los datos actualizados
+            body: JSON.stringify({ Nombre, Rol, Prefix, Tipo, Actividad, Fecha }), // Enviar los datos actualizados
         });
 
         if (response.ok) {

@@ -36,14 +36,11 @@
                     <th><input type="checkbox" id="select-all" onclick="seleccionarTodos(this)"></th> <!-- Checkbox para seleccionar todo -->
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Rol</th>
                     <th>Actividad</th>
                     <th>Fecha</th>
-                    <th>
-                        Descargar
-                    </th>
-                    <th>
-                        Modificar
-                    </th>
+                    <th>Descargar</th>
+                    <th>Modificar</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -73,6 +70,10 @@
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rol" class="form-label">Rol</label>
+                            <input type="text" class="form-control" id="rol" required>
                         </div>
                         <div class="mb-3">
                             <label for="prefijo" class="form-label">Prefijo</label>
@@ -143,6 +144,10 @@
                             <input type="text" class="form-control" id="modificar-nombre" required>
                         </div>
                         <div class="mb-3">
+                            <label for="modificar-rol" class="form-label">Rol</label>
+                            <input type="text" class="form-control" id="modificar-rol" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="modificar-prefijo" class="form-label">Prefijo</label>
                             <select class="form-control" id="modificar-prefijo" required>
                                 <option value="la">La</option>
@@ -166,7 +171,7 @@
                                 <option value="26">26</option>
                             </select>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="modificarRegistro()">Guardar cambios</button>
+                        <button type="button" class="btn btn-primary" onclick="modificarRegistro(idModificar)">Guardar cambios</button>
                     </form>
                 </div>
             </div>

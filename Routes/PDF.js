@@ -121,7 +121,8 @@ router.get('/generar-pdf/:id', async (req, res) => {
 
             // Preparar el texto principal
             const temaSize = 15.5;
-            const parte1 = { text: 'Por su participación en', fontType: 'normal' };
+            const parte1 = { text: 'Por su participación', fontType: 'normal' };
+            const rol = { text: inscrito.Rol || '', fontType: 'normal' };
             const prefijo = {text: inscrito.Prefix, fontType: 'normal'}
             const parte2 = {text: inscrito.Tipo, fontType: 'bold'}
             const actividad = { text: inscrito.Actividad, fontType: 'boldItalic' };
@@ -138,7 +139,7 @@ router.get('/generar-pdf/:id', async (req, res) => {
             const lineHeight = temaSize * 1.2;
 
             // Dividir y dibujar el texto
-            const textParts = [parte1,prefijo,parte2, actividad, parte3];
+            const textParts = [parte1,rol,prefijo,parte2, actividad, parte3];
             const lines = splitTextToLines(textParts, fonts, temaSize, maxWidth);
 
 

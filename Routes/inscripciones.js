@@ -34,7 +34,7 @@ router.get('/inscripciones', (req, res) => {
 
 // Endpoint para agregar una inscripción
 router.post('/agregar', (req, res) => {
-    const { Nombre, Prefix, Tipo, formateo, Fecha } = req.body;
+    const { Nombre, Rol, Prefix, Tipo, formateo, Fecha } = req.body;
 
     // Primero, obtener el último ID
     const sqlGetLastID = 'SELECT MAX(ID) AS lastID FROM jacys2024';
@@ -50,9 +50,9 @@ router.post('/agregar', (req, res) => {
         const newID = lastID + 1; // Asignar el nuevo ID
 
         // Ahora, insertar el nuevo registro
-        const sqlInsert = 'INSERT INTO jacys2024 (ID, Nombre, Prefix, Tipo, Actividad, Fecha) VALUES (?, ?, ?, ?, ?, ?)';
+        const sqlInsert = 'INSERT INTO jacys2024 (ID, Nombre, Rol, Prefix, Tipo, Actividad, Fecha) VALUES (?, ?, ?, ?, ?, ?, ?)';
         
-        db.query(sqlInsert, [newID, Nombre, Prefix, Tipo, formateo, Fecha], (err, results) => {
+        db.query(sqlInsert, [newID, Nombre, Rol, Prefix, Tipo, formateo, Fecha], (err, results) => {
             if (err) {
                 console.error('Error al insertar inscripción:', err);
                 res.status(500).send('Error en el servidor');
@@ -85,13 +85,16 @@ router.get('/inscripciones/:id', (req, res) => {
 // Endpoint para modificar un registro por ID
 router.put('/modificar/:id', (req, res) => {
     const { id } = req.params; // Obtener el ID del registro a modificar
-    const { Nombre, Prefix, Tipo, Actividad, Fecha } = req.body; // Datos actualizados
+    const { Nombre, Rol ,Prefix, Tipo, Actividad, Fecha } = req.body; // Datos actualizados
+
+    console.log(`ID recibido en el backend: ${id}`);
+    console.log(`Datos recibidos: ${JSON.stringify(req.body)}`);
 
     // Consulta para actualizar el registro
-    const sqlUpdate = 'UPDATE jacys2024 SET Nombre = ?, Prefix = ?, Tipo = ?, Actividad = ?, Fecha = ? WHERE ID = ?';
+    const sqlUpdate = 'UPDATE jacys2024 SET Nombre = ?, Rol = ?, Prefix = ?, Tipo = ?, Actividad = ?, Fecha = ? WHERE ID = ?';
 
     // Ejecutar la consulta con los nuevos datos
-    db.query(sqlUpdate, [Nombre, Prefix, Tipo, Actividad, Fecha, id], (err, results) => {
+    db.query(sqlUpdate, [Nombre, Rol,Prefix, Tipo, Actividad, Fecha, id], (err, results) => {
         if (err) {
             console.error('Error al modificar el registro:', err);
             res.status(500).send('Error en el servidor');
