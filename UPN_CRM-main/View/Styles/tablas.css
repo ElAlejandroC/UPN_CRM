@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body {
+    background-color: #f3f4f4; /* Fondo claro */
+    color: #3b4049; /* Color principal del texto */
+}
+h1, p {
+    color: #183f6e; /* Título y subtítulo en azul oscuro */
+}
+table {
+    background-color: #f3f4f4; /* Fondo de la tabla */
+    color: #3b4049; /* Color de texto de la tabla */
+}
+.table-dark {
+    background-color: #183f6e; /* Fondo de encabezado oscuro */
+    color: white; /* Letra blanca para contraste */
+}
+td:hover,tr:hover {
+    font-weight: lighter;
+    cursor: pointer;
+    transition: all .2s;
+}
+footer {
+    color: #183f6e; /* Pie de página en azul oscuro */
+}

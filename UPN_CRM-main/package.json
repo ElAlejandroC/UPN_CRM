@@ -1,0 +1,22 @@
+{
+  "name": "proyecto-cripto",
+  "version": "1.0.0",
+  "description": "Proyecto UPN",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "start"
+  },
+  "author": "Alejandro Contreras Gonzalez",
+  "license": "ISC",
+  "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.11.3",
+    "node-forge": "^1.3.1",
+    "pdf-lib": "^1.17.1",
+    "xlsx": "^0.18.5"
+  }
+}
