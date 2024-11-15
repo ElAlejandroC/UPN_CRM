@@ -27,3 +27,26 @@ td:hover,tr:hover {
 footer {
     color: #183f6e; /* Pie de página en azul oscuro */
 }
+.table-blue,.bg-blue{
+    background-color: #005CAB !important;
+    color: #f3f4f4;
+}
+.add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #005CAB;
+    color: #f3f4f4;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.search-bar {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}

@@ -18,9 +18,10 @@ db.connect((err) => {
     }
 });
 
+
 // Endpoint para obtener todas las inscripciones
-router.get('/inscripciones', (req, res) => {
-    const sql = 'SELECT * FROM jacys2024';
+router.get('/inscripcionesfp24', (req, res) => {
+    const sql = 'SELECT * FROM forprac24B';
     db.query(sql, (err, results) => {
         if (err) {
             console.error('Error al ejecutar la consulta:', err);
@@ -32,11 +33,11 @@ router.get('/inscripciones', (req, res) => {
 });
 
 // Endpoint para agregar una inscripción
-router.post('/agregar', (req, res) => {
-    const { Nombre, Rol, Prefix, Tipo, formateo, Fecha } = req.body;
+router.post('/agregarfp24', (req, res) => {
+    const { Nombre, Rol, Fecha } = req.body;
 
     // Primero, obtener el último ID
-    const sqlGetLastID = 'SELECT MAX(ID) AS lastID FROM jacys2024';
+    const sqlGetLastID = 'SELECT MAX(ID) AS lastID FROM forprac24B';
     
     db.query(sqlGetLastID, (err, results) => {
         if (err) {
@@ -49,9 +50,9 @@ router.post('/agregar', (req, res) => {
         const newID = lastID + 1; // Asignar el nuevo ID
 
         // Ahora, insertar el nuevo registro
-        const sqlInsert = 'INSERT INTO jacys2024 (ID, Nombre, Rol, Prefix, Tipo, Actividad, Fecha) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        const sqlInsert = 'INSERT INTO forprac24B (ID, Nombre, Rol, Fecha) VALUES (?, ?, ?, ?)';
         
-        db.query(sqlInsert, [newID, Nombre, Rol, Prefix, Tipo, formateo, Fecha], (err, results) => {
+        db.query(sqlInsert, [newID, Nombre, Rol, Fecha], (err, results) => {
             if (err) {
                 console.error('Error al insertar inscripción:', err);
                 res.status(500).send('Error en el servidor');
@@ -63,9 +64,9 @@ router.post('/agregar', (req, res) => {
 });
 
 // Endpoint para obtener una inscripción por ID
-router.get('/inscripciones/:id', (req, res) => {
+router.get('/inscripcionesfp24/:id', (req, res) => {
     const { id } = req.params;
-    const sql = 'SELECT * FROM jacys2024 WHERE ID = ?';
+    const sql = 'SELECT * FROM forprac24B WHERE ID = ?';
 
     db.query(sql, [id], (err, results) => {
         if (err) {
@@ -82,18 +83,18 @@ router.get('/inscripciones/:id', (req, res) => {
 });
 
 // Endpoint para modificar un registro por ID
-router.put('/modificar/:id', (req, res) => {
+router.put('/modificarfp24/:id', (req, res) => {
     const { id } = req.params; // Obtener el ID del registro a modificar
-    const { Nombre, Rol ,Prefix, Tipo, Actividad, Fecha } = req.body; // Datos actualizados
+    const { Nombre, Rol , Fecha } = req.body; // Datos actualizados
 
     console.log(`ID recibido en el backend: ${id}`);
     console.log(`Datos recibidos: ${JSON.stringify(req.body)}`);
 
     // Consulta para actualizar el registro
-    const sqlUpdate = 'UPDATE jacys2024 SET Nombre = ?, Rol = ?, Prefix = ?, Tipo = ?, Actividad = ?, Fecha = ? WHERE ID = ?';
+    const sqlUpdate = 'UPDATE forprac24B SET Nombre = ?, Rol = ?, Fecha = ? WHERE ID = ?';
 
     // Ejecutar la consulta con los nuevos datos
-    db.query(sqlUpdate, [Nombre, Rol,Prefix, Tipo, Actividad, Fecha, id], (err, results) => {
+    db.query(sqlUpdate, [Nombre, Rol, Fecha, id], (err, results) => {
         if (err) {
             console.error('Error al modificar el registro:', err);
             res.status(500).send('Error en el servidor');
@@ -113,9 +114,9 @@ router.put('/modificar/:id', (req, res) => {
 
 
 // Endpoint para eliminar inscripciones
-router.delete('/borrar', (req, res) => {
+router.delete('/borrarfp24', (req, res) => {
     const { ids } = req.body;
-    const sql = 'DELETE FROM jacys2024 WHERE ID IN (?)';
+    const sql = 'DELETE FROM forprac24B WHERE ID IN (?)';
 
     db.query(sql, [ids], (err, results) => {
         if (err) {

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Styles/cpc.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="Scripts/CPC2024.JS"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <button class="btn btn-light" onclick="window.location.href='View/index.html'">Volver al Inicio</button>
+            <div class="header-title">
+                <span>Constancias por generar</span>
+                <span class="semester">2024-B</span>
+            </div>
+            <input type="text" class="search-bar" placeholder="Buscar...">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="constancia-item">
+            <table class="constancia-table">
+                <tr>
+                    <td rowspan="3" class="constancia-image-cell">
+                        <div class="constancia-image"><img src="Source/JACyS2024.png" alt="Constancia" class="constancia-image"></div>
+                    </td>
+                    <td colspan="2" class="constancia-title">
+                        <h3>Jornada Académica Cultural y de Salud</h3>
+                    </td>
+                    <td rowspan="3" class="delete-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#005CAB">
+                            <path d="M3 6l3 18h12l3-18h-18zm16.618 2l-2.394 14h-8.448l-2.392-14h13.234zm-7.618-4c1.104 0 2 .896 2 2h-4c0-1.104.896-2 2-2zm-7 2h14v2h-14v-2z"/>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Estado:</td>
+                    <td><span class="finalizada">Finalizada</span></td>
+                </tr>
+                <tr>
+                    <td>Última actualización:</td>
+                    <td>06/11/24</td>
+                </tr>
+                <tr>
+                    <td>Total de constancias:</td>
+                    <td>108</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="constancia-item">
+            <table class="constancia-table">
+                <tr>
+                    <td rowspan="3" class="constancia-image-cell">
+                        <div class="constancia-image"><img src="Source/Generic2024.png" alt="Constancia" class="constancia-image"></div>
+                    </td>
+                    <td colspan="2" class="constancia-title">
+                        <h3>Foro de prácticas profesionales 2024-24 B</h3>
+                    </td>
+                    <td rowspan="3" class="delete-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#005CAB">
+                            <path d="M3 6l3 18h12l3-18h-18zm16.618 2l-2.394 14h-8.448l-2.392-14h13.234zm-7.618-4c1.104 0 2 .896 2 2h-4c0-1.104.896-2 2-2zm-7 2h14v2h-14v-2z"/>
+                        </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Estado:</td>
+                    <td><span class="en-proceso">En proceso</span></td>
+                </tr>
+                <tr>
+                    <td>Última actualización:</td>
+                    <td>13/11/24</td>
+                </tr>
+                <tr>
+                    <td>Total de constancias:</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <button class="add-button">+</button>
+</body>
+</html>

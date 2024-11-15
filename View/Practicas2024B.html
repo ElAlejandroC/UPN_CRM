@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Inscritos - XVIII Jornada Académica</title>
+    <title>Foro de Practicas Profesionales 2024-B</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Styles/tablas.css">
     <script src="Scripts/JAC.js"></script>
@@ -13,7 +13,7 @@
     <header class="bg-blue text-white py-3">
         <div class="container d-flex justify-content-between align-items-center">
             <button class="btn btn-light" onclick="window.location.href='CPC2024B.html'">Volver al Inicio</button>
-            <span>XVIII Jornada Académica, Cultural y de Salud</span>
+            <span>Foro de Practicas Profesionales 2024-B</span>
             <input type="text" class="search-bar" placeholder="Buscar...">
         </div>
     </header>
@@ -36,7 +36,6 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Rol</th>
-                    <th>Actividad</th>
                     <th>Fecha</th>
                     <th>Descargar</th>
                     <th>Modificar</th>
@@ -53,7 +52,7 @@
     <!-- Pie de página -->
     <div class="container mt-5">
         <footer class="text-center">
-            <p>&copy; 2024 XVIII Jornada Académica, Cultural y de Salud. Todos los derechos reservados.</p>
+            <p>Foro de Practicas Profesionales 2024-B.</p>
         </footer>
     </div>
 
@@ -76,28 +75,8 @@
                             <input type="text" class="form-control" id="rol" required>
                         </div>
                         <div class="mb-3">
-                            <label for="prefijo" class="form-label">Prefijo</label>
-                            <select class="form-control" id="prefijo" required>
-                                <option value="la">La</option>
-                                <option value="el">El</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tipoActividad" class="form-label">Tipo de Actividad</label>
-                            <input type="text" class="form-control" id="tipoActividad" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nombreActividad" class="form-label">Nombre de la Actividad</label>
-                            <input type="text" class="form-control" id="nombreActividad" required>
-                        </div>
-                        <div class="mb-3">
                             <label for="fecha" class="form-label">Fecha</label>
-                            <select class="form-control" id="fecha" required>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                            </select>
+                            <input type="text" class="form-control" id="fecha" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
@@ -148,28 +127,8 @@
                             <input type="text" class="form-control" id="modificar-rol" required>
                         </div>
                         <div class="mb-3">
-                            <label for="modificar-prefijo" class="form-label">Prefijo</label>
-                            <select class="form-control" id="modificar-prefijo" required>
-                                <option value="la">La</option>
-                                <option value="el">El</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="modificar-tipoActividad" class="form-label">Tipo de Actividad</label>
-                            <input type="text" class="form-control" id="modificar-tipoActividad" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="modificar-nombreActividad" class="form-label">Nombre de la Actividad</label>
-                            <input type="text" class="form-control" id="modificar-nombreActividad" required>
-                        </div>
-                        <div class="mb-3">
                             <label for="modificar-fecha" class="form-label">Fecha</label>
-                            <select class="form-control" id="modificar-fecha" required>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                            </select>
+                            <input type="text" class="form-control" id="modificar-fecha" required>
                         </div>
                         <button type="button" class="btn btn-primary" onclick="modificarRegistro(idModificar)">Guardar cambios</button>
                     </form>
@@ -181,7 +140,7 @@
 
 
     <!-- Scripts -->
-    <script src="Scripts/JAC.js"></script>
+    <script src="Scripts/Forprac24B.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
